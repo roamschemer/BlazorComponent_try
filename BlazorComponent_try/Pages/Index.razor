@@ -1,0 +1,8 @@
+﻿@page "/"
+
+<p><MyTextInput @bind-Text="Text" /></p>
+<p>親コンポーネント @Text</p>
+
+@code{
+    public string Text { get; set; } = "default";
+}
