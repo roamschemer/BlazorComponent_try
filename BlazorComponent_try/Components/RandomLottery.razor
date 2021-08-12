@@ -1,0 +1,30 @@
+﻿<h6>@Title</h6>
+
+<BSButton Color="Color.Primary" @onclick="OnClick">抽選</BSButton>
+<BSLabel>@Result</BSLabel>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public List<string> Items { get; set; }
+
+    //@bind-Result を使うには以下のセットが必要
+    [Parameter]
+    public string Result { get; set; } = "";
+    [Parameter]
+    public EventCallback<string> ResultChanged { get; set; } //〇〇Changed という名称じゃないとダメ
+
+    /// <summary>
+    /// Itemsから一つをランダムで抽選してResultに格納
+    /// </summary>
+    /// <returns>抽選結果を@bind-Resultにて返す</returns>
+    private Task OnClick() {
+        int seed = Environment.TickCount;
+        var rnd = new System.Random(seed);
+        var no = rnd.Next(0, Items.Count);
+        Result = Items[no];
+        return ResultChanged.InvokeAsync(Result);
+    }
+
+}
