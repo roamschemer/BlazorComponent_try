@@ -1,0 +1,17 @@
+﻿<input type="text" @bind="addText" />
+<button Color="Color.Primary" @onclick="OnClick">Add</button>
+
+@code {
+
+    public string addText;
+
+    [Parameter]
+    public string Text { get; set; }
+    [Parameter]
+    public EventCallback<string> TextChanged { get; set; } //Text プロパティを利用元とバインディングするのでプロパティ名に Changed を付けて TextChanged という名称にする。他の名称では繋がらないので注意!!!
+
+    private Task OnClick(MouseEventArgs e) {
+        Text = Text + ":" + addText;
+        return TextChanged.InvokeAsync(Text); //ここで利用元とTextプロパティの値がバインディングする
+    }
+}

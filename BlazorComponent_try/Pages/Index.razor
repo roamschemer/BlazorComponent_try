@@ -1,36 +1,8 @@
 ﻿@page "/"
 
-<h1>A2Pを抽選せよ</h1>
-<p>
-    <RandomLottery Title="九条家" Items="@Kujos" @bind-Result="KujoResult" />
-</p>
-<p>
-    <RandomLottery Title="ひそうら" Items="@Hisoura" @bind-Result="HisouraResult" />
-</p>
-<p>
-    <RandomLottery Title="ほうれんそうず" Items="@Hourensous" @bind-Result="HourensousResult" />
-</p>
-<p>
-    <RandomLottery Title="フカシス" Items="@Fukasis" @bind-Result="FukasisResult" />
-</p>
-<p>
-    <RandomLottery Title="ユイしあ" Items="@Yuishia" @bind-Result="YuishiaResult" />
-</p>
-<p>
-    <BSLabel>抽選の結果、九条家より @KujoResult 様。ひそうらより @HisouraResult 様。ほうれんそうずより @HourensousResult 様。フカシスより @FukasisResult 様。ユイしあより @YuishiaResult 様が選出されました！！！</BSLabel>
-</p>
-
+<h3>@title</h3>
+<Hoge @bind-Text="title" />
 
 @code{
-    public string Text { get; set; } = "default";
-    public List<string> Kujos = new List<string>() { "九条林檎", "九条棗", "九条杏子", "九条茘枝" };
-    public List<string> Hisoura = new List<string>() { "都三代らみょん", "三田そにあ", "縁うか", "ひなわんこ" };
-    public List<string> Hourensous = new List<string>() { "巻乃もなか", "幸糖ミュウミュウ", "青咲ローズ", "泡沫調" };
-    public List<string> Fukasis = new List<string>() { "白乃クロミ", "碧惺スキア", "紫吹ふうか", "菜花なな" };
-    public List<string> Yuishia = new List<string>() { "結目ユイ", "水瀬しあ" };
-    public string KujoResult;
-    public string HisouraResult;
-    public string HourensousResult;
-    public string FukasisResult;
-    public string YuishiaResult;
+    string title = "Hoge";
 }
